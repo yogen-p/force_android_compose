@@ -1,7 +1,8 @@
-package com.yogenp.openweathercompose
+package com.yogenp.openweathercompose.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yogenp.openweathercompose.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
