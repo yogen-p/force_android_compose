@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/forceListFragment">
+
+    <fragment
+        android:id="@+id/forceListFragment"
+        android:name="com.yogenp.openweathercompose.presentation.ui.forcelist.ForceListFragment"
+        android:label="ForceListFragment" >
+        <action
+            android:id="@+id/goToForceInfoFragment"
+            app:destination="@id/forceInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forceInfoFragment"
+        android:name="com.yogenp.openweathercompose.presentation.ui.forceinfo.ForceInfoFragment"
+        android:label="ForceInfoFragment" />
+</navigation>
