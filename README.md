@@ -5,6 +5,14 @@ Android App using Jetpack Compose that calls the UK Police Open API.
 
 [Fragment 2 API](https://data.police.uk/docs/method/force/)
 
+
+
+### Snapshots
+
+Fragment 1                 |  Fragment 2
+:-------------------------:|:-------------------------:
+![Fragment 1](https://github.com/yogen-p/force_android_compose/blob/master/fragment_1.png)  |  ![Fragment 2](https://github.com/yogen-p/force_android_compose/blob/master/fragment_2.png)
+
 ### Packages
 
 - `di`
