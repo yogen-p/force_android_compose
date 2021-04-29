@@ -1,6 +1,10 @@
 # Force Android Compose App
 Android App using Jetpack Compose that calls the UK Police Open API.
 
+[Fragment 1 API](https://data.police.uk/docs/method/forces/)
+
+[Fragment 2 API](https://data.police.uk/docs/method/force/)
+
 ### Packages
 
 - `di`
