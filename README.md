@@ -22,3 +22,15 @@ Android App using Jetpack Compose that calls the UK Police Open API.
 - `util`
   
   Utilities | Files for general purpose to provide additional functionalities
+
+
+
+### UI Test
+
+[MainActivityTest.kt](https://github.com/yogen-p/force_android_compose/blob/master/app/src/androidTest/java/com/yogenp/openweathercompose/presentation/MainActivityTest.kt) | Test to check the basic working of the app
+
+
+
+### Unit Tests
+
+[MainSharedViewModelTest.kt](https://github.com/yogen-p/force_android_compose/blob/master/app/src/test/java/com/yogenp/openweathercompose/presentation/ui/MainSharedViewModelTest.kt) | Unit Testing ViewModel and Repository using mockito
