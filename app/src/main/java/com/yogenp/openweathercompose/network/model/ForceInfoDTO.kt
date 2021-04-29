@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName
 data class ForceInfoDTO(
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("url")
-    val url: String,
+    val url: String?,
 
     @SerializedName("engagement_methods")
-    val engagement_methods: List<EngMethods>,
+    val engagement_methods: List<EngMethods>?,
 
     @SerializedName("telephone")
-    val telephone: String,
+    val telephone: String?,
 
     @SerializedName("id")
     val id: String,

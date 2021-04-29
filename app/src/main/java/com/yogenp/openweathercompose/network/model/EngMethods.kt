@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class EngMethods(
     @SerializedName("url")
-    val url: String,
+    val url: String?,
 
     @SerializedName("type")
     val type: String,
