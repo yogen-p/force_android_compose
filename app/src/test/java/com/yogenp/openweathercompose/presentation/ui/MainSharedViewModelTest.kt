@@ -3,6 +3,7 @@ package com.yogenp.openweathercompose.presentation.ui
 import com.yogenp.openweathercompose.repository.ForceRepository
 import com.yogenp.openweathercompose.util.FORCE_INFO_DUMMY
 import com.yogenp.openweathercompose.util.FORCE_LIST_DUMMY
+import com.yogenp.openweathercompose.util.Resource
 import junit.framework.TestCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,8 +23,8 @@ import org.mockito.Mockito.mock
 @RunWith(JUnit4::class)
 class MainSharedViewModelTest : TestCase() {
 
-    lateinit var repository: ForceRepository
-    lateinit var viewModel: MainSharedViewModel
+    private lateinit var repository: ForceRepository
+    private lateinit var viewModel: MainSharedViewModel
     private val dispatcher = TestCoroutineDispatcher()
 
     @Before
@@ -37,7 +38,7 @@ class MainSharedViewModelTest : TestCase() {
     @Test
     fun `get force list`(): Unit = runBlockingTest {
 
-        `when`(repository.getForceList()).thenReturn(FORCE_LIST_DUMMY)
+        `when`(repository.getForceList()).thenReturn(Resource.Success(FORCE_LIST_DUMMY))
 
         viewModel.newSearch()
         assertEquals(FORCE_LIST_DUMMY, viewModel.forces.value)
@@ -45,10 +46,20 @@ class MainSharedViewModelTest : TestCase() {
 
     @Test
     fun `get force info`(): Unit = runBlockingTest {
-        `when`(repository.getForceInfo("derbyshire")).thenReturn(FORCE_INFO_DUMMY)
+        `when`(repository.getForceInfo("derbyshire")).thenReturn(Resource.Success(FORCE_INFO_DUMMY))
 
         viewModel.selectForce("derbyshire")
+        viewModel.getForce()
         assertEquals(FORCE_INFO_DUMMY, viewModel.forceInfo.value)
+    }
+
+    @Test
+    fun `network error handling`(): Unit = runBlockingTest {
+        `when`(repository.getForceList()).thenReturn(Resource.Error("Error"))
+
+        viewModel.newSearch()
+//        assertEquals("Error", viewModel.toastMessage)
+        assertEquals(true, viewModel.showToast)
     }
 
     @After

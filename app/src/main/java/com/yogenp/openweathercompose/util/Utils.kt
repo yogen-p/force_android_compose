@@ -5,12 +5,12 @@ import android.net.ConnectivityManager
 import android.net.ConnectivityManager.*
 import android.net.NetworkCapabilities.*
 import android.os.Build
+import android.text.Html
 import com.yogenp.openweathercompose.network.model.ForceInfoDTO
 import com.yogenp.openweathercompose.network.model.ForceListDTO
 
 fun isConnected(context: Context): Boolean {
-    val connectivityManager =
-        context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
         val activeNetwork = connectivityManager.activeNetwork ?: return false
@@ -34,6 +34,12 @@ fun isConnected(context: Context): Boolean {
     }
 
     return false
+}
+
+fun parseHtml(text: String): String = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+    Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT).toString()
+} else {
+    Html.fromHtml(text).toString()
 }
 
 val FORCE_LIST_DUMMY = listOf(
