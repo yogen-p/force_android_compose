@@ -1,7 +1,7 @@
 package com.yogenp.openweathercompose.di
 
 import com.google.gson.GsonBuilder
-import com.yogenp.openweathercompose.network.PoliceNetworkService
+import com.yogenp.openweathercompose.network.ForceApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,11 +16,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecipeService(): PoliceNetworkService{
+    fun provideRecipeService(): ForceApiService{
         return Retrofit.Builder()
-            .baseUrl("https://data.police.uk/api/forces/")
+            .baseUrl("https://data.police.uk/api/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
-            .create(PoliceNetworkService::class.java)
+            .create(ForceApiService::class.java)
     }
 }

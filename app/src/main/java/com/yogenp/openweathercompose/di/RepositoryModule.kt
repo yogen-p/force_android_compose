@@ -1,8 +1,8 @@
 package com.yogenp.openweathercompose.di
 
-import com.yogenp.openweathercompose.network.PoliceNetworkService
-import com.yogenp.openweathercompose.repository.PoliceRepository
-import com.yogenp.openweathercompose.repository.PoliceRepositoryImpl
+import com.yogenp.openweathercompose.network.ForceApiService
+import com.yogenp.openweathercompose.repository.ForceRepository
+import com.yogenp.openweathercompose.repository.ForceRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,10 +19,10 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideRepository(
-        networkService: PoliceNetworkService
-    ): PoliceRepository {
-        return PoliceRepositoryImpl(
-            networkService
+        apiService: ForceApiService
+    ): ForceRepository {
+        return ForceRepositoryImpl(
+            apiService
         )
     }
 }
