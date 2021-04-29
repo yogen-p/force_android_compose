@@ -1,7 +1,40 @@
 package com.yogenp.openweathercompose.util
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.ConnectivityManager.*
+import android.net.NetworkCapabilities.*
+import android.os.Build
 import com.yogenp.openweathercompose.network.model.ForceInfoDTO
 import com.yogenp.openweathercompose.network.model.ForceListDTO
+
+fun isConnected(context: Context): Boolean {
+    val connectivityManager =
+        context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+
+        return when {
+            networkCapabilities.hasTransport(TRANSPORT_WIFI) -> true
+            networkCapabilities.hasTransport(TRANSPORT_CELLULAR) -> true
+            networkCapabilities.hasTransport(TRANSPORT_ETHERNET) -> true
+            else -> false
+        }
+    } else {
+        connectivityManager.activeNetworkInfo?. run {
+            return when(this.type){
+                TYPE_WIFI -> true
+                TYPE_MOBILE -> true
+                TYPE_ETHERNET -> true
+                else -> false
+            }
+        }
+    }
+
+    return false
+}
 
 val FORCE_LIST_DUMMY = listOf(
     ForceListDTO(
